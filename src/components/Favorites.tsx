@@ -26,17 +26,18 @@ export function Favorites({ properties, favorites, onToggleFavorite, onSelect }:
   return (
     <div>
       <div className="favorites-header">
-        <h2>Tus favoritos ({favoriteProperties.length})</h2>
+        <h2 className="h3">Tus favoritos ({favoriteProperties.length})</h2>
       </div>
-      <div className="property-grid">
+      <div className="property-grid row g-4 row-cols-1 row-cols-md-2 row-cols-xl-3">
         {favoriteProperties.map((property) => (
-          <PropertyCard
-            key={property.id}
-            property={property}
-            isFavorite={true}
-            onToggleFavorite={onToggleFavorite}
-            onSelect={onSelect}
-          />
+          <div className="col" key={property.id}>
+            <PropertyCard
+              property={property}
+              isFavorite={true}
+              onToggleFavorite={onToggleFavorite}
+              onSelect={onSelect}
+            />
+          </div>
         ))}
       </div>
     </div>

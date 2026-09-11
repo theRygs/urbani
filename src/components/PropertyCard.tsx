@@ -13,11 +13,16 @@ export function PropertyCard({ property, isFavorite, onToggleFavorite, onSelect 
   }
 
   return (
-    <div className="property-card" onClick={() => onSelect(property)}>
+    <article
+      className="property-card card border-0 h-100"
+      onClick={() => onSelect(property)}
+      role="button"
+      tabIndex={0}
+    >
       <div className="card-image">
         <img src={property.image} alt={property.title} loading="lazy" />
         <button
-          className={`favorite-btn ${isFavorite ? 'active' : ''}`}
+          className={`favorite-btn btn btn-light rounded-circle ${isFavorite ? 'active' : ''}`}
           onClick={(e) => {
             e.stopPropagation()
             onToggleFavorite(property.id)
@@ -28,21 +33,21 @@ export function PropertyCard({ property, isFavorite, onToggleFavorite, onSelect 
             <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
           </svg>
         </button>
-        <span className="card-type">{property.type}</span>
+        <span className="card-type badge rounded-pill text-bg-dark">{property.type}</span>
       </div>
-      <div className="card-content">
+      <div className="card-content card-body">
         <div className="card-price">
           USD {formatPrice(property.price)}
         </div>
-        <h3 className="card-title">{property.title}</h3>
-        <p className="card-location">
+        <h3 className="card-title h5 text-white fw-semibold">{property.title}</h3>
+        <p className="card-location text-body-secondary">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
             <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
             <circle cx="12" cy="10" r="3" />
           </svg>
           {property.location}
         </p>
-        <div className="card-details">
+        <div className="card-details d-flex gap-4">
           {property.bedrooms > 0 && (
             <span className="detail">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -73,6 +78,6 @@ export function PropertyCard({ property, isFavorite, onToggleFavorite, onSelect 
           </span>
         </div>
       </div>
-    </div>
+    </article>
   )
 }

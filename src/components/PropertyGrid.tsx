@@ -24,15 +24,16 @@ export function PropertyGrid({ properties, favorites, onToggleFavorite, onSelect
   }
 
   return (
-    <div className="property-grid">
+    <div className="property-grid row g-4 row-cols-1 row-cols-md-2 row-cols-xl-3">
       {properties.map((property) => (
-        <PropertyCard
-          key={property.id}
-          property={property}
-          isFavorite={favorites.has(property.id)}
-          onToggleFavorite={onToggleFavorite}
-          onSelect={onSelect}
-        />
+        <div className="col" key={property.id}>
+          <PropertyCard
+            property={property}
+            isFavorite={favorites.has(property.id)}
+            onToggleFavorite={onToggleFavorite}
+            onSelect={onSelect}
+          />
+        </div>
       ))}
     </div>
   )
